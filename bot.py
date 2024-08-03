@@ -4,6 +4,7 @@ import os
 from discord.ext import commands 
 from bot_logic import gen_pass 
 from bot_logic import gen_nick 
+from bot_logic import gen_challenge
  
 intents = discord.Intents.default() 
 intents.message_content = True 
@@ -17,7 +18,7 @@ async def on_ready():
  
 @bot.command()                        #      $hello 
 async def hello(ctx): 
-    await ctx.send(f'Привет! Я бот {bot.user}! Вот команды которые у меня есть: $hello - приветствие, $pasw - генерация пароля, $mem - мем, $ng - генерация ника, $rch - рандомайзер чисел от 1 до 100') 
+    await ctx.send(f'Привет! Я бот {bot.user}! Вот команды которые у меня есть: $hello - приветствие, $pasw - генерация пароля, $mem - мем, $ng - генерация ника, $rch - рандомайзер чисел от 1 до 100, $eco_challenge - дает рандомный челлендж про экологию') 
  
 @bot.command()                       #           $pasw 
 async def pasw(ctx): 
@@ -37,6 +38,10 @@ async def rch(ctx):
 @bot.command()                       #                      $ng 
 async def ng(ctx): 
     await ctx.send(gen_nick(8))
+
+@bot.command()                         #                        $eco_challenge
+async def eco_challenge(ctx):
+    await ctx.send(gen_challenge(1))
 
 
     
